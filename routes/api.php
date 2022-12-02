@@ -18,6 +18,48 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("/", function (Request $request) {
-    return response()->json(["test" => "hello modefakah"]);
+// prefix api v1
+Route::prefix('v1')->group(function () {
+    // list all uom
+    Route::get("/uom", function (Request $request) {
+        $message = "Success Get UOM";
+        $code = 200;
+        $data = collect();
+
+        $data->push(['id' => 1, 'value' => 'SHP'], ['id' => 2, 'value' => 'T'], ['id' => 3, 'value' => 'M3']);
+
+        return response()->json([
+            'message' => $message,
+            'code' => $code,
+            'data' => $data->toArray(),
+        ], $code);
+    });
+    // list all currency
+    Route::get("/currency", function (Request $request) {
+        $message = "Success Get Currency";
+        $code = 200;
+        $data = collect();
+
+        $data->push(['id' => 1, 'value' => 'USD'], ['id' => 2, 'value' => 'IDR'], ['id' => 3, 'value' => 'SGD']);
+
+        return response()->json([
+            'message' => $message,
+            'code' => $code,
+            'data' => $data->toArray(),
+        ], $code);
+    });
+    // list all Charge To
+    Route::get("/charge-cost", function (Request $request) {
+        $message = "Success Get Charge Cost";
+        $code = 200;
+        $data = collect();
+
+        $data->push(['id' => 1, 'value' => 'Warehouse'], ['id' => 2, 'value' => 'Inventory'], ['id' => 3, 'value' => 'Stuffing']);
+
+        return response()->json([
+            'message' => $message,
+            'code' => $code,
+            'data' => $data->toArray(),
+        ], $code);
+    });
 });
