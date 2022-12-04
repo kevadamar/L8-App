@@ -40,7 +40,7 @@ Route::prefix('v1')->group(function () {
         $code = 200;
         $data = collect();
 
-        $data->push(['id' => 1, 'value' => 'USD'], ['id' => 2, 'value' => 'IDR'], ['id' => 3, 'value' => 'SGD']);
+        $data->push(['id' => 1, 'value' => 'USD'], ['id' => 2, 'value' => 'AED']);
 
         return response()->json([
             'message' => $message,
